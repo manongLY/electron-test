@@ -1,0 +1,97 @@
+### run the main process 运行住主线程
+
+- 任何 Electron 应用程序的入口都是 main 文件。 这个文件控制了主进程，它运行在一个完整的Node.js环境中，负责控制您应用的生命周期，显示原生界面，执行特殊操作并管理渲染器进程
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 遇到的问题
+##### Error: Electron failed to install correctly, please delete node_modules/electron and try installing again
+按照文档执行
+- npm install --save-dev electron
+- 添加main.js
+- npm start 
+报错
+```
+Error: Electron failed to install correctly, please delete node_modules/electron and try installing again
+```
+
+删了 node_modules 再重新装，还是报错。
+这是按照官网文档一步步来的都报错，那估计是本地环境有点问题。
+我的 npm registry 是**淘宝源**，不能访问**国际互联网**。
+那就改一下 npm registry 指向 https://registry.npmjs.org，然后**科学上网**试一下。改了之后发现就可以了，npm start 也不报错了。
+
+
+![avatar](data:image/png;base64,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)
+
+
+
+**总结解决方式：**
+- 首先搭建翻墙梯子，
+- 其次将 npm registry 指向 https://registry.npmjs.org
+
+具体原因是使用淘宝源和 registry.npmjs.org 下载 electron 的路径不一致导致的。
+
+
+**//** 分割线
+***
+
+
+# @#
+# @#
+# @#
+# @#
+# @#
+# @#
+# @#
+# @#
+# @#
+# @#
+# @#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 多线程
+# 窗口控制
+# 自动升级
+# 持续集成
+# 自动发布
